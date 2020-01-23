@@ -19,12 +19,13 @@ public class CompteRepositoryTest {
 	private CompteRepository compteRepository;
 		
 	@Test
-	public void testInsert() {
+	public void testInsertAndDelete() {
 		Compte c= new Compte("Lete", "Lovelyse", "0664724623", "love@ya.fr", "mdp");
 		compteRepository.save(c);
 		assertNotNull(compteRepository.findById(c.getId()));
-//		compteRepository.delete(c);
-//		assertNull(compteRepository.findById(c.getId()));
+		compteRepository.deleteById(c.getId());;
+		assertNull(compteRepository.findById(c.getId()));
+		assert
 	}
 
 }
