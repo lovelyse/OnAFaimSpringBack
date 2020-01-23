@@ -28,10 +28,9 @@ public class Commande {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqCommande")
-	private Long idCom; 
-	@Lob
+	private Long id; 
 	@Column(name="eval",length=255)
-	private String cEval; 
+	private String eval; 
 	@Enumerated(EnumType.STRING)
 	@Column(name="etat",length=1)
 	private Etat etat=Etat.W; // "en_attente" par défaut
@@ -51,25 +50,25 @@ public class Commande {
 	public Commande() {
 	}
 
-
-	public Long getIdCom() {
-		return idCom;
+	public Long getId() {
+		return id;
 	}
 
 
-	public void setIdCom(Long idCom) {
-		this.idCom = idCom;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
-	public String getcEval() {
-		return cEval;
+	public String getEval() {
+		return eval;
 	}
 
 
-	public void setcEval(String cEval) {
-		this.cEval = cEval;
+	public void setEval(String eval) {
+		this.eval = eval;
 	}
+
 
 	public Etat getEtat() {
 		return etat;
@@ -126,7 +125,7 @@ public class Commande {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idCom == null) ? 0 : idCom.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -140,10 +139,10 @@ public class Commande {
 		if (getClass() != obj.getClass())
 			return false;
 		Commande other = (Commande) obj;
-		if (idCom == null) {
-			if (other.idCom != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!idCom.equals(other.idCom))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
