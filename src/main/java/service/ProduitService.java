@@ -35,7 +35,8 @@ public class ProduitService {
 				produitRepository.save(produitBase);
 				return true;
 			}
-		}else {
+		}
+		else {
 			//création d'un Produit
 			boolean erreur=false;
 			if(c.getId()==null) {
