@@ -22,7 +22,7 @@ import javax.persistence.Version;
 public class Produit {
 	@Id
 	@GeneratedValue(generator = "seqProduit", strategy = GenerationType.SEQUENCE)
-	private Long idProduit;
+	private Long id;
 	@Column(name="libelle", nullable = true)
 	private String libelle;
 	@Column(name="taille", nullable = true)
@@ -41,8 +41,6 @@ public class Produit {
 	private byte[] photo;
 	@OneToMany(mappedBy = "id.produit")
 	private Set<LigneCommande> ligneCommandes; 
-	@Column(name="moy_eval")
-	private int moyPEval=5;
 	@Version
 	private int version;
 	
@@ -53,22 +51,20 @@ public class Produit {
 	}
 
 	
-	public Produit(String libelle, TailleProduit taille, double prix, TypeProduit type, String description,
-			byte[] photo) {
+	public Produit(String libelle, TailleProduit taille, double prix, TypeProduit type, String description) {
 		this.libelle = libelle;
 		this.taille = taille;
 		this.prix = prix;
 		this.type = type;
 		this.description = description;
-		this.photo = photo;
 	}
 
-	public Long getIdProduit() {
-		return idProduit;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdProduit(Long idProduit) {
-		this.idProduit = idProduit;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getLibelle() {
@@ -132,16 +128,6 @@ public class Produit {
 	}
 
 
-	public int getpEval() {
-		return pEval;
-	}
-
-
-	public void setpEval(int pEval) {
-		this.pEval = pEval;
-	}
-
-
 	public int getVersion() {
 		return version;
 	}
@@ -156,7 +142,7 @@ public class Produit {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idProduit == null) ? 0 : idProduit.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -170,10 +156,10 @@ public class Produit {
 		if (getClass() != obj.getClass())
 			return false;
 		Produit other = (Produit) obj;
-		if (idProduit == null) {
-			if (other.idProduit != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!idProduit.equals(other.idProduit))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	} 

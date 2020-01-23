@@ -1,16 +1,16 @@
-package dao;
+package repositories;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import model.Produit;
 import model.TailleProduit;
 import model.TypeProduit;
 
-public interface DAOProduit extends DAOGeneric<Produit,Long> {
+public interface ProduitRepository extends JpaRepository<Produit,Long> {
 	
-	public List<Produit> findBySize(TailleProduit size); 
-	public List<Produit> findByType(TypeProduit type); 
-
-	
+	List<Produit> findAllByTailleProduit(TailleProduit taille); 
+	List<Produit> findAllByTypeProduit(TypeProduit type); 
 	
 }
