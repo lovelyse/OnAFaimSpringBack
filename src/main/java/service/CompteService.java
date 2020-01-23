@@ -78,8 +78,6 @@ public class CompteService {
 	}
 	
 	public boolean checkConnect(Compte c) {
-		Compte compte=null;
-		
 		if(c.getEmail()!=null && c.getMdp()!=null) {
 			Optional<Compte> opt= compteRepository.findByEmailAndMdp(c.getEmail(), c.getMdp());
 			if(opt.isPresent()) {
