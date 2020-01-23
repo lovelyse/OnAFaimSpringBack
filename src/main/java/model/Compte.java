@@ -25,12 +25,12 @@ public class Compte {
 
 	@Id
 	@GeneratedValue(generator = "seqCompte", strategy = GenerationType.SEQUENCE)
-	private Long idCompte; 
+	private Long id; 
 	@Column(name="nom", nullable=true)
 	private String nom;
 	@Column(name="prenom", nullable=true)
 	private String prenom; 
-	@Column(name="tel", length=10, nullable=true)
+	@Column(name="numero", length=10, nullable=true)
 	private String numero;
 	@Column(name="email", nullable=true)
 	@Email
@@ -45,12 +45,12 @@ public class Compte {
 	private Etat compteEtat=Etat.W;
 	@Column(name="date_de_creation")
 	@Temporal(TemporalType.DATE)
-	private Date dateCreation;
+	private Date dateCreation=new Date();
 	@Version
 	private int version;
-	@OneToMany(mappedBy="compte") //PAS UNE ERREUR 
+	@OneToMany(mappedBy="compte")  
 	private Set<Commande> commandes;
-	@OneToMany(mappedBy="compte") //PAS UNE ERREUR
+	@OneToMany(mappedBy="compte")
 	private Set<Devis> deviss;
 	
 	
@@ -67,12 +67,12 @@ public class Compte {
 		this.mdp = mdp;
 	}
 
-	public Long getIdCompte() {
-		return idCompte;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCompte(Long idCompte) {
-		this.idCompte = idCompte;
+	public void setId(Long idCompte) {
+		this.id = idCompte;
 	}
 
 	public String getNom() {
@@ -167,7 +167,7 @@ public class Compte {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idCompte == null) ? 0 : idCompte.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -180,10 +180,10 @@ public class Compte {
 		if (getClass() != obj.getClass())
 			return false;
 		Compte other = (Compte) obj;
-		if (idCompte == null) {
-			if (other.idCompte != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!idCompte.equals(other.idCompte))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

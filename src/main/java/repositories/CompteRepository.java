@@ -1,16 +1,26 @@
-package dao;
+package repositories;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import model.Compte;
 import model.Etat;
 import model.TypeCompte;
 
 
-public interface DAOCompte extends DAOGeneric<Compte,Long> {
+public interface CompteRepository extends JpaRepository<Compte, Long> {
 
-	public Compte checkConnect(String email,String mdp) ;
-	public List<Compte> findByType(TypeCompte type);
-	public List<Compte> findByAccountStatus(Etat etat);
+	//@Query("from Compte c where email=:email and mdp=:mdp")
+	Optional<Compte> findByEmailAndMdp(String email,String mdp);
+	
+	//@Query("from Compte c where type=:type")	
+	List<Compte> findAllByType(TypeCompte type);
+	
+	//@Query("from Compte c where compteEtat=:etat")
+	List<Compte> findAllByCompteEtat(Etat etat);
+	
 }
 
