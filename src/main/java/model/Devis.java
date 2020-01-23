@@ -36,7 +36,7 @@ public class Devis {
 	private double prix;
 	@Column(name="etat",length=15)
 	@Enumerated(EnumType.STRING)
-	private Etat dEtat=Etat.W;
+	private Etat etat=Etat.W;
 	@Column(name="description",length=255)
 	private String description;
 	@Temporal(TemporalType.DATE)
@@ -88,13 +88,14 @@ public class Devis {
 	}
 
 
-	public Etat getdEtat() {
-		return dEtat;
+
+	public Etat getEtat() {
+		return etat;
 	}
 
 
-	public void setdEtat(Etat dEtat) {
-		this.dEtat = dEtat;
+	public void setEtat(Etat etat) {
+		this.etat = etat;
 	}
 
 
@@ -161,6 +162,8 @@ public class Devis {
 			return false;
 		return true;
 	}
+
+
 	
 	
 }

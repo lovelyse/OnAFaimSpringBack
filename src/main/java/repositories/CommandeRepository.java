@@ -10,7 +10,7 @@ import model.Etat;
 
 public interface CommandeRepository extends JpaRepository<Commande, Long> {
 	
-	public List<Commande> findCommandeByCEtat(Etat cEtat);
+	public List<Commande> findCommandeByEtat(Etat cEtat);
 	
 }
 

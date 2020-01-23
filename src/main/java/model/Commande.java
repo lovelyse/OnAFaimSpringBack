@@ -34,7 +34,7 @@ public class Commande {
 	private String cEval; 
 	@Enumerated(EnumType.STRING)
 	@Column(name="etat",length=1)
-	private Etat cEtat=Etat.W; // "en_attente" par défaut
+	private Etat etat=Etat.W; // "en_attente" par défaut
 	@Temporal(TemporalType.DATE)
 	@Column(name="dateCommande")
 	private Date date;
@@ -71,15 +71,15 @@ public class Commande {
 		this.cEval = cEval;
 	}
 
-
-	public Etat getcEtat() {
-		return cEtat;
+	public Etat getEtat() {
+		return etat;
 	}
 
 
-	public void setcEtat(Etat cEtat) {
-		this.cEtat = cEtat;
+	public void setEtat(Etat etat) {
+		this.etat = etat;
 	}
+
 
 
 	public Date getDate() {
@@ -147,6 +147,9 @@ public class Commande {
 			return false;
 		return true;
 	}
+
+
+	
 
 	
 	

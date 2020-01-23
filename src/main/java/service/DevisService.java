@@ -24,7 +24,7 @@ public class DevisService {
 				devisBase=opt.get(); 
 				devisBase.setDate((d.getDate()!=null) ? d.getDate():devisBase.getDate());
 				devisBase.setPrix((d.getPrix()!=0) ? d.getPrix():devisBase.getPrix());
-				devisBase.setdEtat((d.getdEtat()!=null) ? d.getdEtat():devisBase.getdEtat());
+				devisBase.setEtat((d.getEtat()!=null) ? d.getEtat():devisBase.getEtat());
 				devisBase.setDescription((d.getDescription()!=null) ? d.getDescription():devisBase.getDescription());
 				devisBase.setDate((d.getDate()!=null) ? d.getDate():devisBase.getDate());
 				devisBase.setCompte((d.getCompte()!=null) ? d.getCompte():devisBase.getCompte());
