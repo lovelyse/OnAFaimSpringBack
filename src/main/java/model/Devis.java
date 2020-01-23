@@ -52,6 +52,12 @@ public class Devis {
 	public Devis() {
 	}
 
+	
+	public Devis(String description) {
+		this.description = description;
+	}
+
+
 	public Long getId() {
 		return id;
 	}

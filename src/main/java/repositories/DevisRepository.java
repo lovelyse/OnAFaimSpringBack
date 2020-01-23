@@ -11,9 +11,8 @@ import model.Etat;
 
 public interface DevisRepository extends JpaRepository<Devis,Long> {
 
-	public List<Devis> findAllDevisByDetat(Etat cEtat);
-	//public createDevis(); 
-	//public deleteDevis(); 
+	//List<Devis> findAllDevisByDetat(Etat cEtat);
+
 	
-	Optional<Devis> findById(Long Id); 
+	 
 }
