@@ -15,6 +15,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Entity
 @Table(name="produit")
 @SequenceGenerator(name="seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
@@ -33,12 +35,10 @@ public class Produit {
 	@Column(name="type",length=25)
 	@Enumerated(EnumType.STRING)
 	private TypeProduit type; 
-	@Lob
 	@Column(name="description")
 	private String description; 
-	@Lob
 	@Column(name="photo")
-	private byte[] photo;
+	private String photo;
 	@OneToMany(mappedBy = "id.produit")
 	private Set<LigneCommande> ligneCommandes; 
 	@Version
@@ -107,15 +107,15 @@ public class Produit {
 		description = description;
 	}
 
-	
-	public byte[] getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
 
 
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	} 
+
 
 
 	public Set<LigneCommande> getLigneCommandes() {
@@ -162,7 +162,10 @@ public class Produit {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	} 
+	}
+
+
+	
 	
 	
 }
