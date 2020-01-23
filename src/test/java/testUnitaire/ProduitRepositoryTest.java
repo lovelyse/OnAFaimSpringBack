@@ -1,6 +1,7 @@
 package testUnitaire;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,13 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import model.Compte;
 import model.Produit;
 import model.TailleProduit;
-import model.TypeCompte;
 import model.TypeProduit;
-import repositories.CompteRepository;
 import repositories.ProduitRepository;
+
+
 
 
 @RunWith(SpringJUnit4ClassRunner.class) 
@@ -44,6 +44,16 @@ public class ProduitRepositoryTest {
 		Produit p2 = new Produit("chocolat2", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
 		produitRepository.save(p2);
 		List<Produit> list=produitRepository.findAllByTaille(TailleProduit.maxi);
+		assertFalse(list.isEmpty());
+	}
+	
+	@Test
+	public void testFindAllByType() {
+		Produit p = new Produit("chocolat1", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
+		produitRepository.save(p);
+		Produit p2 = new Produit("chocolat2", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
+		produitRepository.save(p2);
+		List<Produit> list=produitRepository.findAllByType(TypeProduit.Viennoiserie);
 		assertFalse(list.isEmpty());
 	}
 
