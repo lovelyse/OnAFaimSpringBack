@@ -23,9 +23,16 @@ public class CompteRepositoryTest {
 		Compte c= new Compte("Lete", "Lovelyse", "0664724623", "love@ya.fr", "mdp");
 		compteRepository.save(c);
 		assertNotNull(compteRepository.findById(c.getId()));
+		compteRepository.deleteById(c.getId());;
+		assertNull(compteRepository.findById(c.getId()));
 	}
 	
-//	compteRepository.deleteById(c.getId());;
-//	assertNull(compteRepository.findById(c.getId()));
+//	@Test
+//	public void testDelete() {
+//		compteRepository.deleteById(100L);
+//		assertNull(compteRepository.findById(100));
+//	}
+	
+
 
 }
