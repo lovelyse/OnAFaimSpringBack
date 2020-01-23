@@ -24,7 +24,7 @@ public class CompteRepositoryTest {
 	@Autowired
 	private CompteRepository compteRepository;
 		
-	//@Test
+	@Test
 	public void testInsertAndDelete(){
 		Compte c= new Compte("Lete", "Lovelyse", "0664724623", "love@ya.fr", "mdp");
 		compteRepository.save(c);
