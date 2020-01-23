@@ -44,7 +44,7 @@
 			</property>
 			<property name="jpaProperties">
 				<props> <!-- création de map pour gérer la gestion de la base (validate, update, create) -->
-					<prop key="hibernate.hbm2ddl.auto">validate</prop>
+					<prop key="hibernate.hbm2ddl.auto">create</prop>
 					<prop key="hibernate.format_sql">${entitymManagerFactory.showSql}</prop>
 				</props>
 			</property>
