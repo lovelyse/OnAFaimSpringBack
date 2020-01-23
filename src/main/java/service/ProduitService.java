@@ -15,7 +15,6 @@ public class ProduitService {
 	private ProduitRepository produitRepository;
 	
 	public boolean save(Produit c) { 
-		System.out.println("----------------------------------- dans le save");
 		Produit produitBase=null;
 		
 		if(c.getId()!=null) {
@@ -68,7 +67,6 @@ public class ProduitService {
 			}
 			if(!erreur) {
 				produitRepository.save(c);
-				System.out.println("------------------------- error");
 				return true;
 			}
 		}

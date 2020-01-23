@@ -2,6 +2,7 @@ package testUnitaire;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import model.Compte;
 import model.Produit;
 import model.TailleProduit;
+import model.TypeCompte;
 import model.TypeProduit;
 import repositories.CompteRepository;
 import repositories.ProduitRepository;
@@ -26,17 +28,31 @@ public class ProduitRepositoryTest {
 	private ProduitRepository produitRepository;
 	
 	@Test
-	public void testInsert(){
-		System.out.println("---------------------------------------- dans le test insert");
-		Produit p = new Produit("choco", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
+	public void testInsertAndDelete(){
+		Produit p = new Produit("chocolatine", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
 		produitRepository.save(p);
 		assertNotNull(produitRepository.findById(p.getId()));
-//		produitRepository.delete(p);
-//        Optional<Produit> opt= produitRepository.findById(p.getId());
-//        assertFalse(opt.isPresent());
+		produitRepository.delete(p);
+        Optional<Produit> opt= produitRepository.findById(p.getId());
+        assertFalse(opt.isPresent());
+	}
+	
+	@Test
+	public void testFindAllByTaille() {
+		Produit p = new Produit("chocolat1", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
+		produitRepository.save(p);
+		Produit p2 = new Produit("chocolat2", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
+		produitRepository.save(p2);
+		List<Produit> list=produitRepository.findAllByTaille(TailleProduit.maxi);
+		assertFalse(list.isEmpty());
 	}
 
 }
+
+
+
+
+
 
 
 

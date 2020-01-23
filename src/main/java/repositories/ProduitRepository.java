@@ -10,7 +10,7 @@ import model.TypeProduit;
 
 public interface ProduitRepository extends JpaRepository<Produit,Long> {
 	
-	List<Produit> findAllByTailleProduit(TailleProduit taille); 
-	List<Produit> findAllByTypeProduit(TypeProduit type); 
+	List<Produit> findAllByTaille(TailleProduit taille); 
+	List<Produit> findAllByType(TypeProduit type); 
 	
 }
