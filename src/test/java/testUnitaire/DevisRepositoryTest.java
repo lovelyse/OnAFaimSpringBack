@@ -1,6 +1,12 @@
 package testUnitaire;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.constraints.AssertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import model.Compte;
 import model.Devis;
+import model.Etat;
 import repositories.CompteRepository;
 import repositories.DevisRepository;
 
@@ -31,11 +38,21 @@ public class DevisRepositoryTest {
 		d.setCompte(c);
 		devisRepository.save(d); 
 		assertNotNull(devisRepository.findById(d.getId())); 
+		devisRepository.delete(d);
+		Optional<Devis> opt= devisRepository.findById(c.getId());
+		assertFalse(opt.isPresent());
 	}
 	
-	
-	//public void updateDevis() {}
-	
+	//@Test 
+	public void testfindAllByEtat() {
+		Compte c1= new Compte("dai", "lilia", "0603116323", "dai@ya.fr", "mdp");
+		compteRepository.save(c1);
+		Devis d1 = new Devis("titi"); 
+		devisRepository.save(d1); 
+		List<Devis> list=devisRepository.findAllByEtat(Etat.W);
+		assertFalse(list.isEmpty());
+	}
 
-	//public void deleteDevis() {}	
+
+	
 }
