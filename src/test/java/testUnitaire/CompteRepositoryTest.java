@@ -23,7 +23,6 @@ public class CompteRepositoryTest {
 
 	@Autowired
 	private CompteRepository compteRepository;
-	private CompteService compteService;
 		
 	//@Test
 	public void testInsertAndDelete(){
@@ -63,12 +62,6 @@ public class CompteRepositoryTest {
 		assertFalse(list.isEmpty());
 	}
 	
-	@Test
-	public void testCheckConnect() {
-		Compte c= new Compte("Lete", "Lovelyse", "0664724623", "love@ya.fr", "mdp");
-		compteRepository.save(c);
-		Boolean b=compteService.checkConnect(c);
-		assertTrue(b.booleanValue());
-	}
+	
 
 }
