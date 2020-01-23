@@ -1,13 +1,18 @@
-package dao;
+package repositories;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import model.Commande;
 import model.Devis;
 import model.Etat;
 
-public interface DAODevis extends DAOGeneric<Devis,Long> {
+public interface DevisRepository extends JpaRepository<Devis,Long> {
 
-	public List<Devis> findDevisByCEtat(Etat cEtat);
+	//List<Devis> findAllDevisByDetat(Etat cEtat);
+
 	
+	 
 }

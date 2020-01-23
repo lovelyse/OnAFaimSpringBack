@@ -17,6 +17,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 
 
@@ -27,7 +28,7 @@ public class Devis {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqDevis")
-	private Long idDevis;
+	private Long id;
 	@Lob
 	@Column(name="eval")
 	private String dEval;
@@ -40,25 +41,30 @@ public class Devis {
 	private String description;
 	@Temporal(TemporalType.DATE)
 	@Column(name="dateCommande")
-	private Date date;
+	private Date date = new Date();
 	@ManyToOne
 	@JoinColumn(name="compte", foreignKey = @ForeignKey(name="compte_devis_fk"))
 	private Compte compte;
+	@Version
+	private int version; 
 	
 	
 	public Devis() {
 	}
 
 	
-	
-
-	public Long getIdDevis() {
-		return idDevis;
+	public Devis(String description) {
+		this.description = description;
 	}
 
 
-	public void setIdDevis(Long idDevis) {
-		this.idDevis = idDevis;
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
@@ -122,11 +128,19 @@ public class Devis {
 	}
 
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idDevis == null) ? 0 : idDevis.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -140,19 +154,13 @@ public class Devis {
 		if (getClass() != obj.getClass())
 			return false;
 		Devis other = (Devis) obj;
-		if (idDevis == null) {
-			if (other.idDevis != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!idDevis.equals(other.idDevis))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }
