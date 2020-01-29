@@ -40,7 +40,7 @@ public class Produit {
 	@Enumerated(EnumType.STRING)
 	@NotNull(message ="champ obligatoire")
 	private TypeProduit type; 
-	@Column(name="description", nullable = false)
+	@Column(name="description")
 	private String description; 
 	@Column(name="photo")
 	private String photo;
@@ -104,13 +104,17 @@ public class Produit {
 		this.type = type;
 	}
 
+	
+
 	public String getDescription() {
 		return description;
 	}
 
+
 	public void setDescription(String description) {
-		description = description;
+		this.description = description;
 	}
+
 
 	public String getPhoto() {
 		return photo;

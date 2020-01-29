@@ -23,8 +23,8 @@ public class ProduitService {
 			if(opt.isPresent()) {
 				produitBase=opt.get();
 				produitBase.setId((c.getId()!=null)?c.getId():produitBase.getId());
-				produitBase.setDescription((c.getDescription()!=null)?c.getDescription():produitBase.getDescription());
 				produitBase.setLibelle((c.getLibelle()!=null)?c.getLibelle():produitBase.getLibelle());
+				produitBase.setDescription((c.getDescription()!=null)?c.getDescription():produitBase.getDescription());
 				produitBase.setLigneCommandes((c.getLigneCommandes()!=null)?c.getLigneCommandes():produitBase.getLigneCommandes());
 				produitBase.setPhoto((c.getPhoto()!=null)?c.getPhoto():produitBase.getPhoto());
 				produitBase.setPrix((c.getPrix()!=0)?c.getPrix():produitBase.getPrix());
