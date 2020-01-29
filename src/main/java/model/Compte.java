@@ -45,7 +45,7 @@ public class Compte {
 	private Etat compteEtat=Etat.W;
 	@Column(name="date_de_creation")
 	@Temporal(TemporalType.DATE)
-	private Date dateCreation=new Date();
+	private Date dateCreation;
 	@Version
 	private int version;
 	@OneToMany(mappedBy="compte")  
