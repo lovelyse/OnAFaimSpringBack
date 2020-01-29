@@ -18,9 +18,10 @@ import model.LigneCommandePK;
 import model.Produit;
 import model.TailleProduit;
 import model.TypeProduit;
+import repositories.CommandeRepository;
+import repositories.CompteRepository;
 import repositories.LigneCommandeRepository;
-
-
+import repositories.ProduitRepository;
 
 
 @RunWith(SpringJUnit4ClassRunner.class) 
@@ -30,23 +31,35 @@ public class LigneCommandeRepositoryTest {
 	@Autowired
 	private LigneCommandeRepository ligneCommandeRepository;
 	
+	@Autowired
+	private CompteRepository compteRepository;
+	
+	@Autowired
+	private CommandeRepository commandeRepository;
+	
+	@Autowired
+	private ProduitRepository produitRepository;
+	
+	
 	@Test
 	public void testInsertAndDelete(){
 		Compte co = new Compte();
+		compteRepository.save(co);
 		Commande c=new Commande();
-		c.setId(5L);
 		c.setCompte(co);
-		Produit p=new Produit("chocolat1", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
+		commandeRepository.save(c);
+		Produit p=new Produit("chocolat1", TailleProduit.Maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
+		produitRepository.save(p);
 		LigneCommandePK lcPK = new LigneCommandePK(c,p);
 		LigneCommande lc = new LigneCommande(3,lcPK);
-		System.out.println("-----------------------------------"+lc);
+//		System.out.println("-----------------------------------"+lc);
 		ligneCommandeRepository.save(lc);
-		System.out.println("--------------------after save");
+//		System.out.println("--------------------after save");
 		assertNotNull(ligneCommandeRepository.findById(lc.getId()));
 		ligneCommandeRepository.delete(lc);
         Optional<LigneCommande> opt= ligneCommandeRepository.findById(lc.getId());
         assertFalse(opt.isPresent());
-        System.out.println("--------------------end");
+//        System.out.println("--------------------end");
 	}
 	
 

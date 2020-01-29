@@ -11,10 +11,8 @@ import repositories.LigneCommandeRepository;
 @Service
 public class LigneCommandeService {
 	
-	
 	@Autowired
 	private LigneCommandeRepository ligneCommandeRepository;
-	
 	
 	public boolean save(LigneCommande lc) {
 		LigneCommande lcBase=null;
@@ -43,7 +41,10 @@ public class LigneCommandeService {
 			if(lc.getVersion()==0) {
 				erreur=true;
 			}
-			
+			if(!erreur) {
+				ligneCommandeRepository.save(lc); 
+				return true; 
+			}
 		}
 		return false;
 	}

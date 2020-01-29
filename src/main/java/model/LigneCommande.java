@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="ligne_commande")
+
 public class LigneCommande {
 	
 	@Size(min=0, max=100)
@@ -27,6 +28,31 @@ public class LigneCommande {
 	public LigneCommande(int qte, LigneCommandePK id) {
 		this.qte = qte;
 		this.id = id;
+	}
+
+	
+	public int getQte() {
+		return qte;
+	}
+
+	public void setQte(int qte) {
+		this.qte = qte;
+	}
+
+	public LigneCommandePK getId() {
+		return id;
+	}
+
+	public void setId(LigneCommandePK id) {
+		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override
@@ -54,31 +80,6 @@ public class LigneCommande {
 		return true;
 	}
 
-	public int getQte() {
-		return qte;
-	}
-
-	public void setQte(int qte) {
-		this.qte = qte;
-	}
-
-	public LigneCommandePK getId() {
-		return id;
-	}
-
-	public void setId(LigneCommandePK id) {
-		this.id = id;
-	}
-
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
-
-	
 	
 	
 }
