@@ -34,7 +34,7 @@ public class LigneCommandeRepositoryTest {
 	public void testInsertAndDelete(){
 		Compte co = new Compte();
 		Commande c=new Commande();
-		c.setIdCom(5L);
+		c.setId(5L);
 		c.setCompte(co);
 		Produit p=new Produit("chocolat1", TailleProduit.maxi, 3, TypeProduit.Viennoiserie, "une joli chocolatine du sud ouest");
 		LigneCommandePK lcPK = new LigneCommandePK(c,p);
