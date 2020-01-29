@@ -1,5 +1,5 @@
 package model;
 
 public enum TailleProduit {
-	mini, maxi, entier, demi, grand, petit, une_part;
+	Mini, Maxi, Entier, Demi, Grand, Petit, Une_part;
 }

@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,17 +27,20 @@ public class Produit {
 	@Id
 	@GeneratedValue(generator = "seqProduit", strategy = GenerationType.SEQUENCE)
 	private Long id;
-	@Column(name="libelle", nullable = true)
+	@Column(name="libelle", nullable = false)
+	@NotEmpty(message="champ obligatoire")
 	private String libelle;
-	@Column(name="taille", nullable = true)
+	@Column(name="taille", nullable = false)
 	@Enumerated(EnumType.STRING)
+	@NotNull(message ="champ obligatoire")
 	private TailleProduit taille;
-	@Column(name="prix", nullable = true)
-	private double prix;
-	@Column(name="type",length=25)
+	@Column(name="prix", nullable = false)
+	private double prix=0.1;
+	@Column(name="type",length=25, nullable = false)
 	@Enumerated(EnumType.STRING)
+	@NotNull(message ="champ obligatoire")
 	private TypeProduit type; 
-	@Column(name="description")
+	@Column(name="description", nullable = false)
 	private String description; 
 	@Column(name="photo")
 	private String photo;
