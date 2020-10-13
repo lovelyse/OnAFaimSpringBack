@@ -70,7 +70,7 @@
 		<dependency>
 		    <groupId>junit</groupId>
 		    <artifactId>junit</artifactId>
-		    <version>4.13</version>
+		    <version>4.13.1</version>
 		    <scope>test</scope> <!-- compile=la dépendance est balancée tout le temps | provided=la dep est fournie, on ne la déporte pas | runtime=on met la dep dans l'archive qui va être générée | system=la dep est fournie par le système | test=la dep est utilisée uniquement jusqu'à la phase de test -->
 		</dependency>
 		
